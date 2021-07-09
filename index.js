@@ -3,9 +3,9 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+app.use(cors());
 dotenv.config();
 const app = express();
-app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 
