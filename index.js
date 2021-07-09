@@ -20,7 +20,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
+app.use(cors());
+app.options("*", cors());
 app.use;
 
 app.use("/records", require("./routers/recordsRouter"));
