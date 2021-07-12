@@ -10,6 +10,10 @@ var params_json = { Bucket: "www.e-procurement.com", Key: "sample.json" };
 //register User
 
 router.get("/", async (req, res) => {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-requested-with, x-requested-by"
+  );
   try {
     const record = s3
       .getObject(params)
@@ -25,6 +29,10 @@ router.get("/", async (req, res) => {
   }
 });
 router.get("/json", async (req, res) => {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-requested-with, x-requested-by"
+  );
   try {
     const record = s3.getObject(params_json, function (err, data) {
       if (err) {
@@ -39,6 +47,10 @@ router.get("/json", async (req, res) => {
 });
 
 router.get("/json-download/:id", function (req, res) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-requested-with, x-requested-by"
+  );
   // download the file via aws s3 here
 
   const { id } = req.params;

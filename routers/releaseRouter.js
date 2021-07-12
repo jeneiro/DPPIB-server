@@ -10,6 +10,10 @@ var params_json = { Bucket: "www.e-procurement.com", Key: "sample.json" };
 //register User
 
 router.get("/", async (req, res) => {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-requested-with, x-requested-by"
+  );
   await s3
     .getObject(params)
     .createReadStream()
@@ -22,6 +26,10 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/json", async (req, res) => {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-requested-with, x-requested-by"
+  );
   const record = s3.getObject(params_json, function (err, data) {
     if (err) {
       res.send(err);
